@@ -1,6 +1,6 @@
 # Governance
 
-`cloud-itonami-8730` is an OSS open-business blueprint for residential care activities for the elderly and disabled -- assisted living and supportive housing without the level of nursing care in residential nursing facilities.
+`cloud-itonami-isic-8730` is an OSS open-business blueprint for residential care activities for the elderly and disabled -- assisted living and supportive housing without the level of nursing care in residential nursing facilities.
 Governance covers both the capability layer and the operator model.
 
 ## Maintainers

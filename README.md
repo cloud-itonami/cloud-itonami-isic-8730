@@ -1,4 +1,4 @@
-# cloud-itonami-8730
+# cloud-itonami-isic-8730
 
 Open Business Blueprint for **ISIC Rev.5 8730**: Residential care activities for the elderly and disabled.
 

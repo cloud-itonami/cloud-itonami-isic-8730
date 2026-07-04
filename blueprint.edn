@@ -1,4 +1,4 @@
-{:itonami.blueprint/id "cloud-itonami-8730"
+{:itonami.blueprint/id "cloud-itonami-isic-8730"
  :itonami.blueprint/name "Residential care activities for the elderly and disabled"
  :itonami.blueprint/isic-rev5 "8730"
  :itonami.blueprint/domain :health/residential-eldercare

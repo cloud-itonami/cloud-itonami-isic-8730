@@ -2,7 +2,7 @@
 
 ## Classification
 
-- Repository: `cloud-itonami-8730`
+- Repository: `cloud-itonami-isic-8730`
 - ISIC Rev.5: `8730`
 - Activity: residential care activities for the elderly and disabled -- assisted living and supportive housing without the level of nursing care in residential nursing facilities
 - Social impact: care quality, data sovereignty, transparent audit
