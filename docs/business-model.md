@@ -30,8 +30,15 @@
 
 ## Trust Controls
 
-- no care plan or incident response is finalized without human sign-off
-- a fabricated assessment forces a hold, not an override
-- every care path is auditable
+- no care plan or incident response is finalized without human
+  sign-off (a facility administrator/care manager)
+- a fabricated jurisdiction citation, incomplete resident evidence, a
+  care-plan review that has exceeded its own regulatory ceiling, or an
+  unresolved incident flag -- each forces a hold, not an override
+- a resident's care plan/incident response cannot each be finalized
+  twice: a double-finalization attempt is held off this actor's own
+  resident facts alone, with no upstream comparison needed
+- every intake, assessment, screening and finalization path is
+  auditable
 - resident data stays outside Git
 - emergency manual override paths remain outside LLM control
