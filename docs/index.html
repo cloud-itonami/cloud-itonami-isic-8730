@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residential care activities for the elderly and disabled</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .isic {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .pitch {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #444;
+        }
+
+        .pitch p {
+            margin-bottom: 1rem;
+        }
+
+        .pitch strong {
+            font-weight: 600;
+        }
+
+        .ctas {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 600px) {
+            .ctas {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            transition: opacity 0.2s;
+            border: 1px solid #333;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        .btn-primary {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #000;
+        }
+
+        .links {
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .links h3 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .links ul {
+            list-style: none;
+        }
+
+        .links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .links a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #fff;
+            border-top: 1px solid #eee;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+        }
+
+        .license {
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="isic">ISIC 8730 — Open Business Blueprint</div>
+            <h1>Residential care activities for the elderly and disabled</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="pitch">
+                <p>An open, governed actor for assisted-living operators: resident intake, jurisdiction assessment, care-plan finalization and incident-response proposals, backed by an immutable audit ledger. The <strong>Eldercare Governor</strong> independently verifies every finalization proposal against spec-cited jurisdiction requirements, regulatory review intervals and incident resolution status — hard holds enforce compliance, and a human facility administrator always signs off before any care plan or incident response is finalized. Deploy this as a forkable business model on your own infrastructure.</p>
+            </section>
+
+            <section class="ctas">
+                <a href="https://itonami.cloud/isco-1212/" class="btn btn-primary">Fork + Self-Host</a>
+                <a href="https://itonami.cloud/docs/go-live.md" class="btn btn-secondary">Production Path</a>
+            </section>
+
+            <section class="links">
+                <h3>Documentation &amp; References</h3>
+                <ul>
+                    <li><a href="../README.md">Repository README</a></li>
+                    <li><a href="operator-quickstart.md">Operator Quickstart</a></li>
+                    <li><a href="business-model.md">Business Model</a></li>
+                    <li><a href="operator-guide.md">Operator Guide</a></li>
+                    <li><a href="adr/0001-architecture.md">Architecture Decision Record</a></li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>AGPL-3.0-or-later. Part of the <a href="https://cloud-itonami.org">cloud-itonami</a> open business blueprint fleet.</p>
+            <div class="license">See LICENSE file for details.</div>
+        </div>
+    </footer>
+</body>
+</html>
