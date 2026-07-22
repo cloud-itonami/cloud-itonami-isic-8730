@@ -70,7 +70,38 @@
           :required-evidence ["Einwilligungserklärung/Vollmachtsnachweis (resident consent/POA documentation)"
                               "Pflegeassessment (care-assessment documentation)"
                               "Pflegekraftqualifikationsnachweis (caregiver certification)"
-                              "Vorfallbericht (incident-report documentation)"]}})
+                              "Vorfallbericht (incident-report documentation)"]}
+   ;; AUS -- unlike Australian state-based private-security/guard licensing,
+   ;; residential aged care is a genuinely FEDERAL (Commonwealth) matter:
+   ;; verified directly against the Aged Care Act 2024 (Cth) No. 104, 2024
+   ;; text at legislation.gov.au (fetched this session), which is a single
+   ;; national Act administered by a single national regulator, not a
+   ;; state-by-state licensing scheme like DEU/USA above. That Act came
+   ;; into force 1 November 2025, replacing the Aged Care Act 1997 (whose
+   ;; own legislation.gov.au compilation history confirms its last
+   ;; compilation ended 31 Oct 2025). Section numbers below (ss 14-16, 27-42,
+   ;; 58-60, 104-105, 146, 164-165A, 344, 379, 440, 481) are taken directly
+   ;; from that Act's own table of contents as rendered at
+   ;; legislation.gov.au/C2024A00104/latest/text. The "7 standards" figure
+   ;; and the "Aged Care Rules 2025" name were confirmed on the regulator's
+   ;; own site (agedcarequality.gov.au) via an Internet Archive capture
+   ;; (https://web.archive.org/web/20251110190847/https://www.agedcarequality.gov.au/providers/quality-standards/strengthened-aged-care-quality-standards,
+   ;; captured 2025-11-10, i.e. after the Act's commencement) because the
+   ;; live agedcarequality.gov.au did not respond to direct fetch this
+   ;; session (repeated timeouts consistent with bot-mitigation, not
+   ;; investigated further per this workspace's policy against CAPTCHA/
+   ;; bot-detection evasion) -- note this is a *strengthened* 7-standard
+   ;; framework that superseded an earlier 8-standard framework under the
+   ;; 1997 Act, so do not assume "8 standards" without checking the date.
+   "AUS" {:name "Australia"
+          :owner-authority "Aged Care Quality and Safety Commission (Commonwealth regulator; Aged Care Act 2024 (Cth) Pt 3 s 344)"
+          :legal-basis "Aged Care Act 2024 (Cth) No. 104, 2024 -- s 104 (registration of providers) + s 146 (compliance with Aged Care Quality Standards); in force since 1 November 2025, replacing the Aged Care Act 1997"
+          :national-spec "Strengthened Aged Care Quality Standards (7 standards) under the Aged Care Rules 2025, Aged Care Act 2024 ss 15 & 146"
+          :provenance "https://www.legislation.gov.au/C2024A00104/latest/text"
+          :required-evidence ["Supporter registration/consent documentation (Aged Care Act 2024 Pt 4, ss 27-42)"
+                              "Aged care needs-assessment documentation (ss 58-60)"
+                              "Aged care worker screening database record / Aged Care Code of Conduct compliance (ss 14, 379)"
+                              "Reportable incident management record (ss 164, 165A)"]}})
 
 (defn spec-basis
   "The jurisdiction's requirement map, or nil -- nil means NO spec-basis,
