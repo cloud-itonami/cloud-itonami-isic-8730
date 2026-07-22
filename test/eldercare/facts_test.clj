@@ -6,6 +6,22 @@
   (is (some? (facts/spec-basis "JPN")))
   (is (string? (:provenance (facts/spec-basis "JPN")))))
 
+(deftest aus-has-a-spec-basis-with-the-same-shape-as-existing-entries
+  (let [aus (facts/spec-basis "AUS")]
+    (is (some? aus))
+    (is (= "Australia" (:name aus)))
+    (is (string? (:owner-authority aus)))
+    (is (string? (:legal-basis aus)))
+    (is (string? (:national-spec aus)))
+    (is (string? (:provenance aus)))
+    (is (= 4 (count (:required-evidence aus))))
+    (is (every? string? (:required-evidence aus)))
+    ;; genuinely a federal/Commonwealth matter -- verify honestly rather
+    ;; than assuming symmetry with state-based regimes (unlike DEU/USA
+    ;; above, which are federated and cite one representative state).
+    (is (re-find #"\(Cth\)" (:legal-basis aus)))
+    (is (re-find #"Aged Care Quality and Safety Commission" (:owner-authority aus)))))
+
 (deftest unknown-jurisdiction-has-no-fabricated-spec-basis
   (is (nil? (facts/spec-basis "ATL"))))
 
