@@ -279,6 +279,35 @@
          (approver-cell a)
          (muted number-key))))
 
+(defn- screening-rows
+  "The committed `:assessment/set` / `:incident-screening/set` payloads.
+  These are the effects whose commit path DOES read `:payload`, so the
+  approver survives into the store -- rendered with the SAME `approver`
+  derivation used for the registry drafts above, which is what makes
+  that derivation visibly two-sided rather than a hardcoded verdict."
+  [db audit]
+  (concat
+   (for [{:keys [id]} (store/all-residents db)
+         :let [a (store/assessment-of db id)]
+         :when a]
+     (row (code id)
+          (code ":jurisdiction/assess")
+          (esc (:jurisdiction a))
+          (str (count (:checklist a)) " evidence items")
+          (if (:spec-basis a) (ok (:spec-basis a)) (crit "none"))
+          (approver-cell (approver a audit :jurisdiction/assess id))))
+   (for [{:keys [id]} (store/all-residents db)
+         :let [s (store/incident-screening-of db id)]
+         :when s]
+     (row (code id)
+          (code ":incident/screen")
+          (muted "—")
+          (if (= :resolved (:verdict s))
+            (ok (str "verdict " (kw (:verdict s))))
+            (crit (str "verdict " (kw (:verdict s)))))
+          (muted "—")
+          (approver-cell (approver s audit :incident/screen id))))))
+
 (defn- catalog-rows [db]
   (let [used (set (map :jurisdiction (store/all-residents db)))]
     (for [iso3 (sort (into used (keys facts/catalog)))
@@ -365,6 +394,19 @@
              (register-rows (store/incident-response-history db) audit
                             :incident-response/finalize "jurisdiction-scoped INC sequence"
                             "incident-response-finalization-draft")))
+
+     (section
+      "Committed assessments &amp; incident screenings"
+      (str "Approver attribution is DERIVED here, not assumed: each row is checked for an "
+           "approver key actually present in what the store retained. These effects commit "
+           "through <code>:payload</code>, so the approver survives — contrast the two "
+           "registers above, whose records are drafted by <code>eldercare.registry</code> "
+           "and carry no approver field, and are therefore joined from the "
+           "<code>:approval-granted</code> audit fact and labelled as such. Both labels are "
+           "produced by the same function, so these cells re-label themselves if the store's "
+           "retention changes.")
+      (table ["Resident" "Op" "Jurisdiction" "Result" "Spec-basis" "Approved by"]
+             (screening-rows db audit)))
 
      (section
       "Jurisdiction spec-basis catalog"

@@ -2529,6 +2529,18 @@ img,svg { max-width: 100%; height: auto; }</style></head><body>
     </table>
   </section>
   <section class="card">
+    <h2>Committed assessments &amp;amp; incident screenings</h2>
+    <p class="muted">Approver attribution is DERIVED here, not assumed: each row is checked for an approver key actually present in what the store retained. These effects commit through <code>:payload</code>, so the approver survives — contrast the two registers above, whose records are drafted by <code>eldercare.registry</code> and carry no approver field, and are therefore joined from the <code>:approval-granted</code> audit fact and labelled as such. Both labels are produced by the same function, so these cells re-label themselves if the store's retention changes.</p>
+    <table>
+      <thead><tr><th>Resident</th><th>Op</th><th>Jurisdiction</th><th>Result</th><th>Spec-basis</th><th>Approved by</th></tr></thead>
+      <tbody>
+        <tr><td><code>resident-1</code></td><td><code>:jurisdiction/assess</code></td><td>JPN</td><td>4 evidence items</td><td><span class="ok">https://www.mhlw.go.jp/</span></td><td><span class="ok">op-1</span> <span class="muted">(retained in record)</span></td></tr>
+        <tr><td><code>resident-3</code></td><td><code>:jurisdiction/assess</code></td><td>JPN</td><td>4 evidence items</td><td><span class="ok">https://www.mhlw.go.jp/</span></td><td><span class="ok">op-1</span> <span class="muted">(retained in record)</span></td></tr>
+        <tr><td><code>resident-1</code></td><td><code>:incident/screen</code></td><td><span class="muted">—</span></td><td><span class="ok">verdict resolved</span></td><td><span class="muted">—</span></td><td><span class="ok">op-1</span> <span class="muted">(retained in record)</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="card">
     <h2>Jurisdiction spec-basis catalog</h2>
     <p class="muted">From <code>eldercare.facts/catalog</code>. Coverage is reported honestly: 5 of 5 catalogued jurisdictions carry an official spec-basis. A jurisdiction absent from this table has NO spec-basis, full stop — the advisor must not fabricate one, and the governor holds if it tries.</p>
     <table>
