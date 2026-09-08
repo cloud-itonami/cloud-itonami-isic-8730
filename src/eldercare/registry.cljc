@@ -30,7 +30,7 @@
   plan or incident response itself (that is `eldercare.operation`'s
   `:care-plan/finalize`/`:incident-response/finalize`, always human-
   gated -- see README `Actuation`)."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 (defn- unsigned-certificate
   "Every certificate this actor produces is UNSIGNED -- signature is the
@@ -80,7 +80,7 @@
     (throw (ex-info "care-plan-finalization: jurisdiction required" {})))
   (when (< sequence 0)
     (throw (ex-info "care-plan-finalization: sequence must be >= 0" {})))
-  (let [plan-number (str (str/upper-case jurisdiction) "-CPL-" (zero-pad sequence 6))
+  (let [plan-number (str (str/upper jurisdiction) "-CPL-" (zero-pad sequence 6))
         record {"record_id" plan-number
                 "kind" "care-plan-finalization-draft"
                 "resident_id" resident-id
@@ -105,7 +105,7 @@
     (throw (ex-info "incident-response-finalization: jurisdiction required" {})))
   (when (< sequence 0)
     (throw (ex-info "incident-response-finalization: sequence must be >= 0" {})))
-  (let [response-number (str (str/upper-case jurisdiction) "-INC-" (zero-pad sequence 6))
+  (let [response-number (str (str/upper jurisdiction) "-INC-" (zero-pad sequence 6))
         record {"record_id" response-number
                 "kind" "incident-response-finalization-draft"
                 "resident_id" resident-id
