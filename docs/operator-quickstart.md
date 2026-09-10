@@ -70,7 +70,7 @@ clojure -M:lint
 The **Eldercare Governor** — the independent verification layer that enforces HARD holds and checks — is in:
 
 ```
-src/eldercare/governor.cljc
+src/eldercare/governor.kotoba
 ```
 
 Key contract:

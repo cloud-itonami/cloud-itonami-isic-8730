@@ -81,7 +81,7 @@ enforce this (`eldercare.governor`'s `:actuation/finalize-care-plan`/
 `:actuation/finalize-incident-response` high-stakes gate and
 `eldercare.phase`'s phase table, which never puts `:care-plan/
 finalize`/`:incident-response/finalize` in any phase's `:auto` set) --
-see `eldercare.phase`'s docstring and `test/eldercare/phase_test.clj`'s
+see `eldercare.phase`'s docstring and `test/eldercare/phase_test.kotoba`'s
 `care-plan-finalize-never-auto-at-any-phase`/`incident-response-
 finalize-never-auto-at-any-phase`. The actor may draft, check and
 recommend; a human facility administrator/care manager is always the
@@ -166,14 +166,14 @@ bespoke domain capability lib to reference at all.
 
 | File | Role |
 |---|---|
-| `src/eldercare/store.cljc` | **Store** protocol -- `MemStore` ‖ `DatomicStore` (`langchain.db`) + append-only audit ledger + separate care-plan-finalization/incident-response-finalization history. No dynamically-filed sub-record -- both actuation ops act directly on a pre-seeded resident, and the double-finalization guards check dedicated `:care-plan-finalized?`/`:incident-response-finalized?` booleans rather than a `:status` value |
-| `src/eldercare/registry.cljc` | Care-plan-finalization + incident-response-finalization draft records, plus `care-plan-review-overdue?`/`max-review-interval-days` -- the FIRST check in this fleet's temporal-sufficiency family to enforce a MAXIMUM elapsed-time ceiling ("not too much time may pass") rather than a MINIMUM required wait |
-| `src/eldercare/facts.cljc` | Per-jurisdiction assisted-living/eldercare catalog with an official spec-basis citation per entry, honest coverage reporting |
-| `src/eldercare/eldercareopsllm.cljc` | **EldercareOps-LLM Advisor** -- `mock-advisor` ‖ `llm-advisor`; intake/assessment/incident-screening/care-plan-finalization/incident-response-finalization proposals |
-| `src/eldercare/governor.cljc` | **Eldercare Governor** -- 4 HARD checks (spec-basis · evidence-incomplete · care-plan-review-overdue, pure ground-truth MAXIMUM-ceiling recompute · incident-flag-unresolved, unconditional evaluation, the TENTH grounding of this discipline) + already-care-plan-finalized/already-incident-response-finalized guards + 1 soft (confidence/actuation gate) |
-| `src/eldercare/phase.cljc` | **Phase 0→3** -- read-only → assisted intake → assisted assess → supervised (both finalizations always human; resident intake is the ONLY auto-eligible op, no direct capital risk) |
-| `src/eldercare/operation.cljc` | **OperationActor** -- langgraph-clj StateGraph |
-| `src/eldercare/sim.cljc` | demo driver |
+| `src/eldercare/store.kotoba` | **Store** protocol -- `MemStore` ‖ `DatomicStore` (`langchain.db`) + append-only audit ledger + separate care-plan-finalization/incident-response-finalization history. No dynamically-filed sub-record -- both actuation ops act directly on a pre-seeded resident, and the double-finalization guards check dedicated `:care-plan-finalized?`/`:incident-response-finalized?` booleans rather than a `:status` value |
+| `src/eldercare/registry.kotoba` | Care-plan-finalization + incident-response-finalization draft records, plus `care-plan-review-overdue?`/`max-review-interval-days` -- the FIRST check in this fleet's temporal-sufficiency family to enforce a MAXIMUM elapsed-time ceiling ("not too much time may pass") rather than a MINIMUM required wait |
+| `src/eldercare/facts.kotoba` | Per-jurisdiction assisted-living/eldercare catalog with an official spec-basis citation per entry, honest coverage reporting |
+| `src/eldercare/eldercareopsllm.kotoba` | **EldercareOps-LLM Advisor** -- `mock-advisor` ‖ `llm-advisor`; intake/assessment/incident-screening/care-plan-finalization/incident-response-finalization proposals |
+| `src/eldercare/governor.kotoba` | **Eldercare Governor** -- 4 HARD checks (spec-basis · evidence-incomplete · care-plan-review-overdue, pure ground-truth MAXIMUM-ceiling recompute · incident-flag-unresolved, unconditional evaluation, the TENTH grounding of this discipline) + already-care-plan-finalized/already-incident-response-finalized guards + 1 soft (confidence/actuation gate) |
+| `src/eldercare/phase.kotoba` | **Phase 0→3** -- read-only → assisted intake → assisted assess → supervised (both finalizations always human; resident intake is the ONLY auto-eligible op, no direct capital risk) |
+| `src/eldercare/operation.kotoba` | **OperationActor** -- langgraph-clj StateGraph |
+| `src/eldercare/sim.kotoba` | demo driver |
 | `test/eldercare/*_test.clj` | governor contract · phase invariants · store parity · registry conformance · facts coverage |
 
 ## Business-process coverage (honest)
