@@ -143,7 +143,7 @@ audit-ledger stack only, per the blueprint's own explicit statement.
   treatment as the twenty prior actors, extending the pattern to a
   second social/health-services vertical (ISIC division 87).
 - (+) The actuation invariant (governor + phase, two layers) is
-  regression-tested by `test/eldercare/phase_test.clj`'s `care-plan-
+  regression-tested by `test/eldercare/phase_test.kotoba`'s `care-plan-
   finalize-never-auto-at-any-phase`/`incident-response-finalize-never-
   auto-at-any-phase`.
 - (+) `MemStore` ‖ `DatomicStore` parity is proven by `test/eldercare/
