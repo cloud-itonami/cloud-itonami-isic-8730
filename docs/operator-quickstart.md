@@ -36,7 +36,7 @@ To fork this repository outside the monorepo:
 Validate the Eldercare Governor contract, phase invariants, and jurisdiction facts:
 
 ```bash
-clojure -M:dev:test
+kbb -M:dev:test
 ```
 
 This runs:
@@ -52,7 +52,7 @@ Expected output: All tests pass. See `test/eldercare/*_test.clj` for details.
 Walk through two clean resident lifecycles (care-plan finalization + incident-response finalization) and five HARD-hold cases:
 
 ```bash
-clojure -M:dev:run
+kbb -M:dev:run
 ```
 
 Expected output: Demo traces show resident intake, jurisdiction assessment, care-plan proposal + governor approval/hold, and incident-response finalization paths with audit ledger entries.
@@ -62,7 +62,7 @@ Expected output: Demo traces show resident intake, jurisdiction assessment, care
 Static analysis via clj-kondo (errors fail):
 
 ```bash
-clojure -M:lint
+kbb -M:lint
 ```
 
 ## Where the Governor sits
@@ -82,10 +82,10 @@ See `docs/adr/0001-architecture.md` for the full architecture.
 
 ## Next Steps
 
-1. **Validate locally**: Run `clojure -M:dev:test` to confirm the contract holds
+1. **Validate locally**: Run `kbb -M:dev:test` to confirm the contract holds
 2. **Read the operator guide**: See `docs/operator-guide.md` for deployment and certification steps
 3. **Review the business model**: See `docs/business-model.md` for revenue and customer segments
-4. **Inspect the demo**: Run `clojure -M:dev:run` to see residents flowing through intake → assessment → finalization
+4. **Inspect the demo**: Run `kbb -M:dev:run` to see residents flowing through intake → assessment → finalization
 5. **Fork for production**: Replace `:local/root` dependencies, configure your jurisdiction facts, deploy to your infrastructure
 
 ## Support & License

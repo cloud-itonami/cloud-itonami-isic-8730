@@ -25,7 +25,7 @@
   the actor code, so two consecutive runs are byte-identical (verified
   by diffing two runs into separate scratch dirs).
 
-  Usage: `clojure -M:dev:render-html [out-file]`
+  Usage: `kbb -M:dev:render-html [out-file]`
   (default `docs/samples/operator-console.html`)."
   (:require [jp-go-dds.skin]
             [kotoba.lang.text :as str]
@@ -352,7 +352,7 @@
       "Residents"
       (str "Demo snapshot — build-time-generated from <code>eldercare.store</code> "
            "through the real actor graph by <code>eldercare.render-html</code> "
-           "(<code>clojure -M:dev:render-html</code>). Every row is read back out of "
+           "(<code>kbb -M:dev:render-html</code>). Every row is read back out of "
            "the store after the run; none of it is typed into this page.")
       (table ["Resident" "Name" "Jurisdiction" "Care-plan review age"
               "Incident flag" "Care plan" "Incident response" "Last op status"]
