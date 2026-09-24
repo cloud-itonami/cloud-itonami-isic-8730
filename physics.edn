@@ -1,0 +1,35 @@
+;; What this vertical's robot physically does, declared for
+;; kotoba.robotics.process (kotoba-lang/robotics). `kbb -M:dev:physics` runs it.
+;;
+;; README "Robotics premise": a mobility-assist and fall-detection robot
+;; supports physical resident safety in residential care for the elderly and
+;; disabled (ISIC 8730). Its physical work: reaching a resident who has
+;; fallen, and walking beside a resident who leans on its handle, where the
+;; lean raises the load's centre of gravity against the robot's footprint.
+;;
+;; Every number without a cited source is marked `estimate` in its :basis.
+;; Replacing an estimate with a sourced value is this bot's growth work.
+{:physics/schema "itonami.physical-ai.spec.v1"
+ :repo "cloud-itonami/cloud-itonami-isic-8730"
+ :cases
+ [{:id :fall-response-run
+   :kind :transport
+   :procedure "robot drives from its dock to a resident whose fall it detected"
+   :params {:mass-kg 50.0 :payload-kg 3.0 :v-max-mps 1.0 :a-max-mps2 0.4
+            :brake-decel-mps2 0.8 :drive-force-n 150.0 :crr 0.02
+            :cog-height-m 0.55 :support-half-length-m 0.28 :max-time-s 5000.0}
+   :sweep {:param :distance-m :values [20.0 50.0 80.0 120.0 160.0]}
+   :quantity :cycle-time-s
+   :limit {:max 120.0 :basis "estimate: robot at the resident within 2 minutes of the fall, before staff arrive"}
+   :boundary {:lo 5.0 :hi 500.0}}
+  {:id :walking-support-lean
+   :kind :transport
+   :procedure "resident walks beside the robot leaning about 30 kg on its handle; the robot walks 20 m and brakes when an obstacle appears"
+   :params {:mass-kg 50.0 :payload-kg 30.0 :distance-m 20.0 :v-max-mps 0.6 :a-max-mps2 0.3
+            :drive-force-n 150.0 :crr 0.02
+            :cog-height-m 0.40 :support-half-length-m 0.30
+            :payload-cog-height-m 0.95 :max-time-s 2000.0}
+   :sweep {:param :brake-decel-mps2 :values [0.5 1.0 1.5 2.0 3.0]}
+   :quantity :min-tipover-margin
+   :limit {:min 0.50 :basis "estimate: half the restoring moment kept in reserve because a resident's lean is sudden and sideways as well as forward"}
+   :boundary {:lo 0.2 :hi 6.0}}]}
